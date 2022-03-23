@@ -97,7 +97,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import ShoppingCart from './shoppingCart/ShoppingCart.vue'
+import ShoppingCart from '../components/shoppingcart/ShoppingCart'
 export default {
   components: { ShoppingCart },
   name: 'PrimaryNavigation',

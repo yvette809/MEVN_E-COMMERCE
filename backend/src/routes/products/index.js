@@ -12,7 +12,7 @@ productRouter.get("/", async (req, res, next) => {
             next(error);
             res.status(404).json({ msg: 'products not found' })
         }
-        res.json({ num: products.length, data: products })
+        res.json( products )
 
     } catch (error) {
         next(error)
