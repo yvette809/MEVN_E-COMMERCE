@@ -24,19 +24,19 @@
     </div>
     <!-- Password input -->
     <div class="mb-4">
-      <label class="form-label" for="form2Example2">Password</label>
+      <label class="form-label" for="form2Example3">Password</label>
       <input
         type="password"
-        id="form2Example2"
+        id="form2Example3"
         class="form-control"
         v-model="user.password"
       />
     </div>
     <div class="mb-4">
-      <label class="form-label" for="form2Example2">Confirm Password</label>
+      <label class="form-label" for="form2Example4">Confirm Password</label>
       <input
         type="password"
-        id="form2Example2"
+        id="form2Example4"
         class="form-control"
         v-model="user.confirmPassword"
       />
