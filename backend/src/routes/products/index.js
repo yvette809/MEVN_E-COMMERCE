@@ -5,42 +5,21 @@ const { auth, admin } = require("../../middleware/authMidleware")
 const { default: mongoose } = require('mongoose')
 
 //gett all products
-// productRouter.get("/", async (req, res, next) => {
-//     try {
-//         let products = await ProductModel.find(req.query)
-//         if (!products) {
-//             next(error);
-//             res.status(404).json({ msg: 'products not found' })
-//         }
-//         res.json( products )
-
-//     } catch (error) {
-//         next(error)
-
-//     }
-
-// })
-//get all products with pagination
 productRouter.get("/", async (req, res, next) => {
-    const pageSize = 10;
-    const page = Number(req.query.pageNumber) || 1;
-  
-    const keyword = req.query.keyword
-      ? {
-          name: {
-            $regex: req.query.keyword,
-            $options: "i",
-          },
+    try {
+        let products = await ProductModel.find(req.query)
+        if (!products) {
+            next(error);
+            res.status(404).json({ msg: 'products not found' })
         }
-      : {};
-  
-    const count = await ProductModel.countDocuments({ ...keyword });
-    const products = await ProductModel.find({ ...keyword })
-      .limit(pageSize)
-      .skip(pageSize * (page - 1));
-  
-    res.json({ products, page, pages: Math.ceil(count / pageSize) });
-  });
+        res.json( products )
+
+    } catch (error) {
+        next(error)
+
+    }
+
+})
 
 // create a new product
 productRouter.post("/", auth, admin, async (req, res, next) => {
