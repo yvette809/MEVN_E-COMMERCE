@@ -10,11 +10,11 @@
         </router-link>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">{{ product.description }}</p>
-        <router-link type="button" class="btn btn-info ms-auto" to="{name:'productDetails',params:{id:Product._id}}"
-          >Show product</router-link
-        >
+        <h5 class="card-title">{{ product.name }}</h5><br>
+        <!-- <p class="card-text">{{ product.description }}</p> -->
+        <!-- <router-link type="button" class="btn btn-info ms-auto" to="{name:'productDetails',params:{id:Product._id}}"
+          >Show product</router-link -->
+        <p>${{product.price}}</p>
       </div>
     </div>
   </div>

@@ -2,14 +2,14 @@
   <div class="p-2 d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
       <div class="image-container">
-        <img :src="item.product.image" class="img-fluid" />
+        <img :src="item.product.image" class="img-fluid mb-4" />
       </div>
       <div>
         <div>
-          <strong>{{ item.product.name }}</strong>
+          <strong class="mx-4">{{ item.product.name }}</strong>
         </div>
         <div>
-          <small>{{ item.quantity }} x {{ item.product.price }}</small>
+          <small class="mx-4">{{ item.quantity }} x {{ item.product.price }}</small>
         </div>
       </div>
     </div>

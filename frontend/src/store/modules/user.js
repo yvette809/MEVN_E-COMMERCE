@@ -34,7 +34,7 @@ export default {
       const res = await axios.post('http://localhost:4000/users/login', payload.user)
       console.log(res)
       if(res.status === 200) {
-        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('user', res.data.token)
         commit('SET_USER', res.data.token)
 
         if(payload.route) {
@@ -68,7 +68,7 @@ export default {
         const res = await axios.post('http://localhost:4000/users/register', payload)
         console.log('res',res.data)
         if(res.status === 200) {
-          localStorage.setItem('user', res.data.token)
+          localStorage.setItem('user', res.data.name)
           commit('REGISTER_USER', res.data)
           router.push("/")
   

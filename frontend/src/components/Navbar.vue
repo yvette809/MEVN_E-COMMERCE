@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
         <router-link class="navbar-brand mt-2 mt-lg-0" to="/">
-          <i class="fa-brands fa-shopware me-2"></i> Shopware.se
+          <i class="fa-brands fa-shopware me-2"></i> Electrohop.se
         </router-link>
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -40,10 +40,8 @@
 
       <!-- Right elements -->
       <div class="d-flex align-items-center">
-
-
         <!-- Notifications -->
-        <div class="dropdown">
+        <div class="dropdown" @click="handleRedirect">
           <a
             class="text-reset me-3 dropdown-toggle hidden-arrow"
             href="#"
@@ -53,14 +51,16 @@
             aria-expanded="false"
           >
             <i class="fas fa-shopping-cart"></i>
-            <span v-if="cartItemCount" class="badge rounded-pill badge-notification bg-danger">{{cartItemCount}}</span>
+            <span
+              v-if="cartItemCount"
+              class="badge rounded-pill badge-notification bg-danger"
+              >{{ cartItemCount }}</span
+            >
           </a>
           <div
             class="dropdown-menu dropdown-menu-end shopping-cart"
             aria-labelledby="navbarDropdownMenuLink"
-          >
-            <ShoppingCart />
-          </div>
+          ></div>
         </div>
         <!-- Avatar -->
         <div class="dropdown" v-if="loggedIn">
@@ -79,39 +79,45 @@
             aria-labelledby="navbarDropdownMenuAvatar"
           >
             <li>
-              <router-link class="dropdown-item" to="/myprofile">My profile</router-link>
+              <router-link class="dropdown-item" to="/myprofile"></router-link>
             </li>
             <li>
-              <router-link class="dropdown-item" @click="logout" to="/login">Logout</router-link>
+              <router-link class="dropdown-item" @click="logout" to="/login"
+                >Logout</router-link
+              >
             </li>
           </ul>
         </div>
-        <router-link to="/login" class="nav-link text-dark" v-else>Login</router-link>
+        <router-link to="/login" class="nav-link text-dark" v-else
+          >Login</router-link
+        >
       </div>
       <!-- Right elements -->
     </div>
     <!-- Container wrapper -->
   </nav>
-<!-- Navbar -->
+  <!-- Navbar -->
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import ShoppingCart from '../components/shoppingcart/ShoppingCart'
+import { mapGetters, mapActions } from "vuex";
+
 export default {
-  components: { ShoppingCart },
-  name: 'PrimaryNavigation',
+  name: "PrimaryNavigation",
   computed: {
-    ...mapGetters(['cartItemCount', 'loggedIn'])
+    ...mapGetters(["cartItemCount", "loggedIn"]),
   },
   methods: {
-    ...mapActions(['logout'])
-  }
-}
+    ...mapActions(["logout"]),
+    handleRedirect() {
+      return this.$router.push({ name: "shoppingcart" });
+    },
+  },
+};
 </script>
 
 <style scoped>
-  .shopping-cart {
-    min-width: 450px;
-  }
+.shopping-cart {
+  min-width: 450px;
+}
 </style>

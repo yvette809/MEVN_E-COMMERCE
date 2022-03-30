@@ -23,14 +23,14 @@ export default ({
         }
     },
     actions: {
-        async getProducts({commit}){
-            const res = await axios.get("http://localhost:4000/products")
-            console.log(res.data)
-            commit('SET_PRODUCTS',res.data)
-            commit('SET_LOADING')
+        // async getProducts({commit}){
+        //     const res = await axios.get("http://localhost:4000/products")
+        //     console.log(res.data)
+        //     commit('SET_PRODUCTS',res.data)
+        //     commit('SET_LOADING')
            
 
-        },
+        // },
         async getProductById({commit}, id){
             const res = await axios.get(`http://localhost:4000/products/${id}`)
             commit('SET_PRODUCT', res.data)

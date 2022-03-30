@@ -5,6 +5,9 @@ import ProductDetails from '../views/ProductDetails'
 import LoginView from '../views/LoginView'
 import RegisterView from '../views/RegisterView'
 import MyProfile from '../views/MyProfile'
+//import MyOrders from '../views/ShoppingCart'
+import ShoppingCart from '../views/ShoppingCart'
+import NotFound from '../views/NotFound'
 import store from '../store'
 
 const requireAuth = (to, from, next) => {
@@ -56,6 +59,25 @@ const routes = [
     // meta: { authorize: true }
     beforeEnter: requireAuth
   },
+  {
+    path: '/shoppingcart',
+    name: 'shoppingcart',
+    component: ShoppingCart,
+    
+  },
+  {
+    path:'/:catchAll(.*)',
+    name:'NotFound',
+    component:NotFound
+
+  }
+  // {
+  //   path: '/cart/:id?',
+  //   name: 'myOrders',
+  //   component: MyOrders,
+  //   beforeEnter: requireAuth,
+  //   props:true
+  // },
 
 ]
 
