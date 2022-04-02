@@ -1,5 +1,5 @@
 <template>
-  <div class="container bg-primary">
+  <div class="container-fluid bg-info text-center mt-5 py-3">
       <div class="row">
           <div class="col">
               Copyright & copy;electrohop

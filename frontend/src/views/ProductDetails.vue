@@ -1,4 +1,7 @@
 <template>
+  <router-link to="/products"
+    ><button class="btn btn-info mb-3">Go Back</button></router-link
+  >
   <div v-if="product">
     <div class="row">
       <div class="col-md-6">
@@ -9,9 +12,18 @@
         <hr />
         <p>price: ${{ product.price }}</p>
         <hr />
-        <br />
+        <p>
+          Status: {{ product.countInStock > 0 ? "In stock" : "Not in Stock" }}
+        </p>
+        <hr />
+
         <p>{{ product.description }}</p>
-        <button  @click="addToCart({ product, quantity })" class="btn btn-info">
+
+        <button
+          @click="addToCart({ product, quantity })"
+          class="btn btn-info"
+          :disabled="product.countInStock === 0"
+        >
           <i class="fa-solid fa-cart-plus"></i> Add to cart
         </button>
       </div>

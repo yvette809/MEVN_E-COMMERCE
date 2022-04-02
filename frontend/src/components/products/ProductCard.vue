@@ -4,7 +4,7 @@
       <div>
         <img :src="product.image" class="card-img-top" />
         <router-link
-          :to="{ name: 'productDetails', params: { id: product._id } }"
+          :to="{ name: 'productDetails', params: { id: product._id } }" 
         >
           <div class="mask"></div>
         </router-link>

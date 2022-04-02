@@ -12,7 +12,7 @@ export default {
   },
   getters: {
     loggedIn: state => state.loggedIn,
-    register:state=> state.user
+    user:state=> state.user
     
   },
   mutations: {
@@ -68,7 +68,7 @@ export default {
         const res = await axios.post('http://localhost:4000/users/register', payload)
         console.log('res',res.data)
         if(res.status === 200) {
-          localStorage.setItem('user', res.data.name)
+          localStorage.setItem('user', res.data)
           commit('REGISTER_USER', res.data)
           router.push("/")
   

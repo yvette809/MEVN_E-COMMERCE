@@ -5,10 +5,12 @@ import ProductDetails from '../views/ProductDetails'
 import LoginView from '../views/LoginView'
 import RegisterView from '../views/RegisterView'
 import MyProfile from '../views/MyProfile'
-//import MyOrders from '../views/ShoppingCart'
+import MyOrders from '../views/ShoppingCart'
+import PlaceOrder from '../views/PlaceOrder'
 import ShoppingCart from '../views/ShoppingCart'
 import NotFound from '../views/NotFound'
 import store from '../store'
+
 
 const requireAuth = (to, from, next) => {
   let loggedIn = store.getters.loggedIn
@@ -63,21 +65,28 @@ const routes = [
     path: '/shoppingcart',
     name: 'shoppingcart',
     component: ShoppingCart,
-    
+
   },
   {
-    path:'/:catchAll(.*)',
-    name:'NotFound',
-    component:NotFound
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound
 
-  }
-  // {
-  //   path: '/cart/:id?',
-  //   name: 'myOrders',
-  //   component: MyOrders,
-  //   beforeEnter: requireAuth,
-  //   props:true
-  // },
+  },
+  {
+    path: '/order/:id',
+    name: 'myOrders',
+    component: MyOrders,
+    beforeEnter: requireAuth,
+    props: true
+  },
+  {
+    path: '/placeorder',
+    name: 'placeorder',
+    component: PlaceOrder,
+    beforeEnter: requireAuth,
+
+  },
 
 ]
 

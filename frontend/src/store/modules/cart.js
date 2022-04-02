@@ -36,20 +36,22 @@ export default {
       state.cart = state.cart.filter(item => item.product._id !== id)
 
     },
-    DECREMENT: (state) => {
-      let total
-      total = state.cart.map(item => {
-        return item.quantity--
-
-      })
+    DECREMENT: (state, { product, quantity }) => {
+      let pdt = state.cart.find(item => item.product._id === product._id)
+      if (pdt.quantity > 0) {
+        pdt.quantity -= 1
+        return
+      }
+      state.cart.shift({ product, quantity })
 
     },
-    INCREMENT: (state) => {
-      let total
-      total = state.cart.map(item => {
-        return item.quantity++
-
-      })
+    INCREMENT: (state, { product, quantity }) => {
+      let pdt = state.cart.find(item => item.product._id === product._id)
+      if (pdt) {
+        pdt.quantity += 1
+        return
+      }
+      state.cart.unshift({ product, quantity })
 
     }
 
@@ -61,11 +63,11 @@ export default {
     removeFromCart: ({ commit }, id) => {
       commit("REMOVE_FROM_CART", id)
     },
-    decrement: ({ commit }) => {
-      commit('DECREMENT')
+    decrement: ({ commit }, { product, quantity }) => {
+      commit('DECREMENT', { product, quantity })
     },
-    increment: ({ commit }) => {
-      commit('INCREMENT')
+    increment: ({ commit }, { product, quantity }) => {
+      commit('INCREMENT', { product, quantity })
     }
   }
 }

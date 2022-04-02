@@ -13,11 +13,14 @@ import Footer from "./components/Footer.vue";
 export default {
   components: {
     Navbar,
+    Footer
   },
 };
 </script>
 
-<style >
+<style lang="scss">
+
+
 
 * {
   margin: 0;
