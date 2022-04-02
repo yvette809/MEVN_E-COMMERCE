@@ -3,6 +3,7 @@ const userRouter = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const UserModel = require('./schema')
+const {auth} = require('../../middleware/authMidleware')
 
 //Register a user
 
@@ -76,5 +77,22 @@ const generateToken = (id) => {
     })
 }
 
+
+// get logged in user
+userRouter.get("/profile", auth, async (req, res, next) => {
+    const user = await UserModel.findById(req.user._id);
+  
+    if (user) {
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      });
+    } else {
+      res.status(404);
+      throw new Error("User not found");
+    }
+  });
 
 module.exports = userRouter

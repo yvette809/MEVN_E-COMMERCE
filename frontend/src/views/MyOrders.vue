@@ -1,10 +1,10 @@
 <template>
   <h1>my orders</h1>
-  <!--   
-  <div :v-for="order in orders" :key="order._id">
-      <p>{{order.product.name}}</p>
 
-  </div> -->
+  <div :v-for="order in orders" :key="order._id">
+    <p>{{ order.product.name }}</p>
+  </div>
+  -->
 </template>
 
 <script>
@@ -21,8 +21,7 @@ export default {
     ...mapActions(["getMyOrders", "addToCart"]),
   },
   created() {
-    // this.getMyOrders();
-    this.addToCart(this.id, this.qty);
+    this.getMyOrders();
   },
   computed: {
     ...mapGetters(["orders"]),

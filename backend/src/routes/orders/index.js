@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const orderRouter = express.Router()
 const { auth, admin } = require('../../middleware/authMidleware')
 const OrderModel = require('./schema')
@@ -17,7 +18,9 @@ orderRouter.post("/", auth, async (req, res, next) => {
       orderItems,
       user: req.user._id,
 
+
     });
+    console.log('order', order)
 
     const createdOrder = await order.save();
 
@@ -33,6 +36,7 @@ orderRouter.get("/myorders", auth, async (req, res, next) => {
     console.log('ORDERS: ', orders)
     if (orders) {
       res.status(200).json(orders);
+
     } else {
       const error = new Error("Orders not found");
       error.httpStatusCode = 404;

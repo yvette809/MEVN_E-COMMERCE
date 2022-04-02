@@ -73,8 +73,15 @@ const routes = [
     component: NotFound
 
   },
+  // {
+  //   path: '/order/:id',
+  //   name: 'myOrders',
+  //   component: MyOrders,
+  //   beforeEnter: requireAuth,
+  //   props: true
+  // },
   {
-    path: '/order/:id',
+    path: '/myorders',
     name: 'myOrders',
     component: MyOrders,
     beforeEnter: requireAuth,

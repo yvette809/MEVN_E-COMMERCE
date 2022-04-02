@@ -13,7 +13,6 @@
 
   <div class="p-2 d-flex justify-content-between align-items-center">
     <div>
-      
       <div>
         Totalt: <strong>${{ shoppingCartTotal }}</strong>
       </div>
@@ -22,7 +21,7 @@
 
     <button
       class="btn btn-info"
-      @click="checkOutHandler"
+      @click="createOrder({ orderItems: shoppingCart })"
       :disabled="shoppingCart.length === 0"
     >
       Proceed to Checkout
@@ -32,12 +31,12 @@
 
 <script>
 import ShoppingCartProduct from "../components/shoppingcart/ShoppingCartProduct.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
       qty: 1,
-      id:this.$route.params.id
+      id: this.$route.params.id,
     };
   },
   components: { ShoppingCartProduct },
@@ -45,8 +44,10 @@ export default {
     ...mapGetters(["shoppingCart", "shoppingCartTotal", "loggedIn"]),
   },
   methods: {
+    ...mapActions(["createOrder"]),
     checkOutHandler() {
-      this.$router.push(`/order/${this.id}`);
+      // this.$router.push(`/order/${this.id}`);
+      this.$router.push("/myorders");
     },
   },
 };
