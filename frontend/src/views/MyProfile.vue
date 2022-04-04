@@ -1,31 +1,25 @@
 <template>
   <div class="text-center" v-if="user">
-    <h1>Welcome <br />{{ user.name }}</h1>
+    <h1 ><span class="text-info">{{ user.name }} </span> below is a sumary of your order</h1>
   </div>
   <div class="container text-center">
-    <h1>Your orders</h1>
-    <div v-if="orders.length < 0">
-      <p>There is no order for this user</p>
+   
+    <div v-if="orders.length === 0">
+      <h2 class="mt-3">There is no order for this user</h2>
     </div>
     <div v-else>
       <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Date</th>
-      <th scope="col">Details</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-     <OrderCard
-        v-for="order in orders"
-        :key="order._id"
-        :order="order"
-      />
-    </tbody>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <OrderCard v-for="order in orders" :key="order._id" :order="order" />
+        </tbody>
       </table>
-     
     </div>
   </div>
 </template>

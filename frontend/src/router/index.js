@@ -6,6 +6,7 @@ import LoginView from '../views/LoginView'
 import RegisterView from '../views/RegisterView'
 import MyProfile from '../views/MyProfile'
 import MyOrders from '../views/ShoppingCart'
+import OrderDetails from '../views/OrderDetails'
 import PlaceOrder from '../views/PlaceOrder'
 import ShoppingCart from '../views/ShoppingCart'
 import NotFound from '../views/NotFound'
@@ -68,25 +69,26 @@ const routes = [
 
   },
   {
+    path: '/order/:id',
+    name: 'orderDetails',
+    component: OrderDetails,
+    beforeEnter: requireAuth,
+    props: true
+  },
+  {
     path: '/:catchAll(.*)',
     name: 'NotFound',
     component: NotFound
 
   },
+
   // {
-  //   path: '/order/:id',
+  //   path: '/myorders',
   //   name: 'myOrders',
   //   component: MyOrders,
   //   beforeEnter: requireAuth,
   //   props: true
   // },
-  {
-    path: '/myorders',
-    name: 'myOrders',
-    component: MyOrders,
-    beforeEnter: requireAuth,
-    props: true
-  },
   {
     path: '/placeorder',
     name: 'placeorder',

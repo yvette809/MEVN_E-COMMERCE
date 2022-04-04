@@ -16,7 +16,10 @@ export default {
         },
         CREATE_ORDER: (state, order) => {
             state.order = order
-        }
+        },
+        SET_ORDER: (state, order) => {
+            state.order = order
+        },
 
     },
     actions: {
@@ -54,6 +57,18 @@ export default {
                 console.log(error)
 
             }
+
+        },
+        async getOrderById({ commit }, id) {
+            let config = {
+                headers: {
+
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }
+            const res = await axios.get(`http://localhost:4000/orders/${id}`,config)
+            console.log('orderres', res)
+            commit('SET_ORDER', res.data)
 
         }
     }

@@ -21,7 +21,8 @@
 
     <button
       class="btn btn-info"
-      @click="createOrder({ orderItems: shoppingCart })"
+      @click="createOrder({ orderItems: shoppingCart }), checkOutHandler"
+      
       :disabled="shoppingCart.length === 0"
     >
       Proceed to Checkout
@@ -46,8 +47,7 @@ export default {
   methods: {
     ...mapActions(["createOrder"]),
     checkOutHandler() {
-      // this.$router.push(`/order/${this.id}`);
-      this.$router.push("/myorders");
+      this.$router.push(`/order/${this.id}`);
     },
   },
 };

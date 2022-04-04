@@ -1,14 +1,12 @@
 <template>
-  <!-- <div>
-    <h1>{{order.orderItems[0].product}}</h1> 
-    <p>{{order.user}}</p>
-    <P>{{order._id}}</P>  
-  </div> -->
-
   <tr :key="order._id">
     <td>{{ order._id }}</td>
-    <td>{{ order.createdAt }}</td>
-    <td><button class="btn">Details</button></td>
+    <td>{{ order.createdAt.substring(0, 10) }}</td>
+    <td>
+      <router-link :to="{ name: 'orderDetails', params: { id: order._id } }"
+        ><button class="btn btn-info">Details</button></router-link
+      >
+    </td>
   </tr>
 </template>
 

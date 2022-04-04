@@ -33,7 +33,7 @@ orderRouter.post("/", auth, async (req, res, next) => {
 orderRouter.get("/myorders", auth, async (req, res, next) => {
   try {
     const orders = await OrderModel.find({ user: mongoose.Types.ObjectId(req.user._id) });
-    console.log('ORDERS: ', orders)
+
     if (orders) {
       res.status(200).json(orders);
 
@@ -44,6 +44,23 @@ orderRouter.get("/myorders", auth, async (req, res, next) => {
     }
   } catch (error) {
     next(error);
+  }
+});
+
+
+
+//get order by id
+orderRouter.get("/:id", auth, async (req, res, next) => {
+  const order = await OrderModel.findById(req.params.id).populate(
+    "orderItems.product",
+    "name image price"
+  );
+
+  if (order) {
+    res.json(order);
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
   }
 });
 
