@@ -21,12 +21,12 @@
 
     <button
       class="btn btn-info"
-      @click="createOrder({ orderItems: shoppingCart }), checkOutHandler"
-      
+      @click="createOrder({ orderItems: shoppingCart })"
       :disabled="shoppingCart.length === 0"
     >
-      Proceed to Checkout
+      Save Order
     </button>
+    <button class="btn btn-info" @click="checkoutHandler">Checkout</button>
   </div>
 </template>
 
@@ -47,7 +47,8 @@ export default {
   methods: {
     ...mapActions(["createOrder"]),
     checkOutHandler() {
-      this.$router.push(`/order/${this.id}`);
+      // this.$router.push(`/order/${this.id}`);
+      this.$router.push({ name: "orderDetails", params: { id: this.id } });
     },
   },
 };
