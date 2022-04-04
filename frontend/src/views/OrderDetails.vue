@@ -1,14 +1,7 @@
 <template>
-  <h1>Orders</h1>
+  <h1 class="text-center mb-3">OrderItems</h1>
 
   <div :key="order._id">
-    <!-- v-if="order.orderItems"
-    :v-for="item in order.orderItems"
-    key="order._id"
-  
-    <p>{{ item.product.name }}</p>
-    <img :src="item.product.image" alt="" /> -->
-
     <OrderDetailsCard
       v-for="item in order.orderItems"
       :key="item.product._id"

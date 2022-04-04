@@ -19,14 +19,14 @@
       <small class="text-muted">inkl. moms</small>
     </div>
 
-    <button
+    <!-- <button
       class="btn btn-info"
       @click="createOrder({ orderItems: shoppingCart })"
       :disabled="shoppingCart.length === 0"
     >
       Save Order
-    </button>
-    <button class="btn btn-info" @click="checkoutHandler">Checkout</button>
+    </button> -->
+    <button class="btn btn-info" @click="checkOutHandler">Checkout</button>
   </div>
 </template>
 
@@ -47,8 +47,13 @@ export default {
   methods: {
     ...mapActions(["createOrder"]),
     checkOutHandler() {
-      // this.$router.push(`/order/${this.id}`);
-      this.$router.push({ name: "orderDetails", params: { id: this.id } });
+      if (this.loggedIn) {
+        this.createOrder({ orderItems: this.shoppingCart });
+        alert("order saved in database");
+        this.$router.push(`/order/${this.id}`);
+      } else {
+        this.$router.push("/login");
+      }
     },
   },
 };
