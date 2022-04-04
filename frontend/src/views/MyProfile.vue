@@ -7,8 +7,26 @@
     <div v-if="orders.length < 0">
       <p>There is no order for this user</p>
     </div>
-    <div v-else></div>
-    <OrderCard v-for="order in orders" :key="order._id" order="order" />
+    <div v-else>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Date</th>
+      <th scope="col">Details</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+     <OrderCard
+        v-for="order in orders"
+        :key="order._id"
+        :order="order"
+      />
+    </tbody>
+      </table>
+     
+    </div>
   </div>
 </template>
 

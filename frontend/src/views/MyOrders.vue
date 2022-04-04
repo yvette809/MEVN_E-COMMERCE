@@ -1,7 +1,7 @@
 <template>
   <h1>my orders</h1>
 
-  <div :v-for="order in orders" :key="order._id">
+  <div :v-for="order in orders.orderItems" :key="order._id">
     <p>{{ order.product.name }}</p>
   </div>
   -->

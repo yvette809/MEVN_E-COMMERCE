@@ -41,7 +41,7 @@ export default {
         async createOrder({ commit }, order) {
             let config = {
                 headers: {
-                    "Content-Type": "application/json",
+
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
             }
