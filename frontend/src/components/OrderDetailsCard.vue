@@ -8,7 +8,7 @@
         <p>{{ item.product.name }}</p>
       </div>
       <div class="col col-md-4">
-        <p>Price: ${{ item.product.price }}</p>
+        <p>Price: ${{ item.product.price }}</p> -->
         <p>
           {{ item.product.qty }} X {{ item.product.price }} = ${{
             item.product.qty * item.product.price

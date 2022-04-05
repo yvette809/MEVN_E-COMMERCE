@@ -1,6 +1,6 @@
 <template>
   <div class="text-center" v-if="user">
-    <h1 ><span class="text-info">{{ user.name }} </span> below is a sumary of your order</h1>
+    <p >Welcome back <span class="text-info">{{ user.name }}! </span> </p>
   </div>
   <div class="container text-center">
    
